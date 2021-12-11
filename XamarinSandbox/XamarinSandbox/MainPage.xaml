@@ -19,6 +19,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label x:Name="VersionInfomation"></Label>
     </StackLayout>
 
 </ContentPage>
