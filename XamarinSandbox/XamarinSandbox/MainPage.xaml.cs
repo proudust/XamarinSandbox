@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using Xamarin.Forms;
 
 namespace XamarinSandbox
@@ -13,6 +10,13 @@ namespace XamarinSandbox
         public MainPage()
         {
             InitializeComponent();
+            string version = Type.GetType("Mono.Runtime") is Type t 
+                ? "You are running with the Mono VM " + t.GetMethods()
+                    .FirstOrDefault(x => x.Name == "GetDisplayName")
+                    ?.Invoke(null, null)
+                    ?.ToString()
+                : "";
+            VersionInfomation.Text = version;
         }
     }
 }
